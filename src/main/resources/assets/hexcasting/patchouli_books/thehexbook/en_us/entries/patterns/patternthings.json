@@ -1,0 +1,17 @@
+{
+  "name": "hexthingy.entry.patternthings",
+  "category": "hexcasting:patterns",
+  "icon": "minecraft:spyglass",
+  "sortnum": 5,
+  "advancement": "hexcasting:root",
+  "pages": [
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hexthingy:things/pasteurpurification",
+      "anchor": "hexthingy:things/pasteurpurification",
+      "input": "entity",
+      "output": "number",
+      "text": "hexthingy.page.things.pasteurpurification"
+    }
+  ]
+}

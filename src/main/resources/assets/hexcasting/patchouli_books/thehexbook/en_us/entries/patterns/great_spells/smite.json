@@ -1,0 +1,17 @@
+{
+  "name": "hexthingy.entry.smite",
+  "category": "hexcasting:patterns/great_spells",
+  "icon": "minecraft:iron_sword",
+  "sortnum": 3,
+  "advancement": "hexcasting:root",
+  "pages": [
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hexthingy:smite",
+      "anchor": "hexthingy:smite",
+      "input": "entity, number",
+      "output": "",
+      "text": "hexthingy.page.smite"
+    }
+  ]
+}
