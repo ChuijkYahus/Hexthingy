@@ -1,7 +1,7 @@
 {
   "name": "hexthingy.entry.spellthings",
   "category": "hexcasting:patterns/spells",
-  "icon": "hexcasting:quenched_allay_shard",
+  "icon": "hexcasting:thought_knot",
   "sortnum": 5,
   "advancement": "hexcasting:root",
   "pages": [

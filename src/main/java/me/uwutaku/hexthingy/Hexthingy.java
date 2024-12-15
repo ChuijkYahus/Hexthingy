@@ -1,6 +1,7 @@
 package me.uwutaku.hexthingy;
 
 import at.petrak.hexcasting.api.casting.ActionRegistryEntry;
+import at.petrak.hexcasting.api.casting.castables.Action;
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import at.petrak.hexcasting.api.casting.math.HexDir;
 import at.petrak.hexcasting.api.casting.math.HexPattern;
@@ -17,30 +18,21 @@ public class Hexthingy implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		Registry.register(HexActions.REGISTRY, new Identifier(MODID, "smite"),
-				new ActionRegistryEntry(
-						HexPattern.fromAngles("wweeewwweeeqeeeadweeead", HexDir.EAST),
-						new ActionPredicateWrapper(new Smite(),
-								(CastingEnvironment env) -> Optional.empty()
-						)
-				)
-		);
-		Registry.register(HexActions.REGISTRY, new Identifier(MODID, "things/pasteurpurification"),
-				new ActionRegistryEntry(
-						HexPattern.fromAngles("aqqqqa", HexDir.NORTH_WEST),
-						new ActionPredicateWrapper(new PasteurPurification(),
-								(CastingEnvironment env) -> Optional.empty()
-						)
-				)
-		);
-		Registry.register(HexActions.REGISTRY, new Identifier(MODID, "things/cleaneffect"),
-				new ActionRegistryEntry(
-						HexPattern.fromAngles("qqqqwaqw", HexDir.SOUTH_WEST),
-						new ActionPredicateWrapper(new CleanEffect(),
-								(CastingEnvironment env) -> Optional.empty()
-						)
-				)
-		);
+		registerAction("smite", "wweeewwweeeqeeeadweeead", HexDir.EAST, new Smite());
+		registerAction("things/pasteurpurification", "aqqqqa", HexDir.NORTH_WEST, new PasteurPurification());
+		registerAction("things/cleaneffect", "qqqqwaqw", HexDir.SOUTH_WEST, new CleanEffect());
+		registerAction("allaycreation", "qqqqqweeweeaeeqeeeeeweeweeaeeaeeweedqqqqdadedaddwwqqq", HexDir.SOUTH_EAST, new AllayCreation());
 
 	}
+	private void registerAction(String actionId, String pattern, HexDir direction, Action action) {
+		Registry.register(
+				HexActions.REGISTRY,
+				new Identifier(MODID, actionId),
+				new ActionRegistryEntry(
+						HexPattern.fromAngles(pattern, direction),
+						new ActionPredicateWrapper(action, (CastingEnvironment env) -> Optional.empty())
+				)
+		);
+	}
+
 }

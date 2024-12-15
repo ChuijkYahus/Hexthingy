@@ -18,9 +18,6 @@ class Smite : SpellAction {
         val target = args.getLivingEntityButNotArmorStand(0)
         val dmg = args.getDouble(1)
         env.assertEntityInRange(target)
-        if(!target.isAlive) {
-            throw MishapNotAlive()
-        }
 
         val cost = dmg * MediaConstants.SHARD_UNIT * 1.5
         return SpellAction.Result(
