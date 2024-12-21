@@ -10,7 +10,8 @@
   "hexthingy.entry.allaycreation": "Allay Creation",
   "hexthingy.entry.patternthings": "Pattern Things",
   "hexthingy.entry.spellthings": "Spell Things",
-
+  "death.attack.smitecaster": "%1$s some death",
+  "death.attack.smiterecipient": "%1$s some death",
   "hexthingy.page.smite": "Deals damage to entity. Costs about 1.5 $(l:items/amethyst)$(item)Amethyst Shards/$ per 1 $(thing)HP/$.",
   "hexthingy.page.allaycreation": "By infusing a Vex with media, you can create an Allay. Costs about 15 $(l:items/amethyst)$(item)Charged Amethyst/$",
   "hexthingy.page.things.pasteurpurification": "Takes an entity and returns its health",
