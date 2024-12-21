@@ -9,11 +9,8 @@ import at.petrak.hexcasting.api.casting.math.HexPattern;
 import at.petrak.hexcasting.api.utils.MediaHelper;
 import at.petrak.hexcasting.common.lib.hex.HexActions;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.entity.damage.DamageType;
-import net.minecraft.registry.Registries;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
@@ -42,10 +39,12 @@ public class Hexthingy implements ModInitializer {
 				)
 		);
 	}
-	public static long getTotalMediaFromPlayer(ServerPlayerEntity player){
-
-		long media = 0;
-		List<ADMediaHolder> media_holders = MediaHelper.scanPlayerForMediaStuff(player);
+	public static float getTotalMediaFromEntity(LivingEntity entity){
+		if(!entity.isPlayer()){
+			return 0.0f;
+		}
+		float media = 0.0f;
+		List<ADMediaHolder> media_holders = MediaHelper.scanPlayerForMediaStuff((ServerPlayerEntity) entity);
 		for (ADMediaHolder holder : media_holders){
 			media += holder.getMedia();
 		}
