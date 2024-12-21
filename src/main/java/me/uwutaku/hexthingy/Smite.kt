@@ -37,14 +37,15 @@ class Smite : SpellAction {
         RenderedSpell {
         override fun cast(env: CastingEnvironment) {
             if (target.world is ServerWorld) {
-                if(target is PlayerEntity){
-                    //make here reverse damage
-                    val caster_media_amount = Hexthingy.getTotalMediaFromPlayer(caster as ServerPlayerEntity)
-                    val target_media_amount = Hexthingy.getTotalMediaFromPlayer(target as ServerPlayerEntity)
+                val caster_media_amount = Hexthingy.getTotalMediaFromEntity(caster)
+                val target_media_amount = Hexthingy.getTotalMediaFromEntity(target)
+                
+                val total_media = caster_media_amount + target_media_amount
+                var caster_damage = (target_media_amount / total_media) * dmg.toFloat()
+                var target_damage = (caster_media_amount / total_media) * dmg.toFloat()
 
-                    caster.damage(DamageTypes.of(caster.world, DamageTypes.smitecaster_damage), 1.0f)
-                }
-                target.damage(DamageTypes.of(target.world, DamageTypes.smiterecipient_damage), dmg.toFloat())
+                caster.damage(DamageTypes.of(caster.world, DamageTypes.smitecaster_damage), caster_damage)
+                target.damage(DamageTypes.of(target.world, DamageTypes.smiterecipient_damage), target_damage)
             }
         }
     }
