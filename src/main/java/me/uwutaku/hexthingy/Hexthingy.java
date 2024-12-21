@@ -15,7 +15,7 @@ import java.util.Optional;
 public class Hexthingy implements ModInitializer {
 
 	public static final String MODID = "hexthingy";
-
+//test
 	@Override
 	public void onInitialize() {
 		registerAction("smite", "wweeewwweeeqeeeadweeead", HexDir.EAST, new Smite());
